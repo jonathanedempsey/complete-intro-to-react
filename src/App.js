@@ -7,7 +7,7 @@ const Pet = (props) => {
 };
 
 // it is required that components are capitalised, specifically when using JSX.
-// JSX will assume anything capitalised is something you created, while something lowercase,
+// JSX will assume anything captalised is something you created, while something lowercase,
 // like "div", is an existing element
 const App = () => {
     return React.createElement(
