@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom"
-import Pet from "./Pet";
+import SearchParams from "./SearchParams";
 
 // it is required that components are capitalised, specifically when using JSX.
 // JSX will assume anything captalised is something you created, while something lowercase,
@@ -8,9 +8,7 @@ const App = () => {
     return (
         <div>
             <h1>Adopt Me!</h1>
-            <Pet name="Luna" animal="Dog" breed="Havanese" />
-            <Pet name="Pepper" animal="Bird" breed="Cockatiel" />
-            <Pet name="Sudo" animal="Dog" breed="Wheaten Terrier" />
+            <SearchParams />
         </div>
     );
 };
