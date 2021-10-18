@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Pet from "./Pet";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
@@ -6,7 +7,27 @@ const SearchParams = () => {
     const [location, setLocation] = useState("Seattle, WA");
     const [animal, setAnimal] = useState("");
     const [breed, setBreed] = useState("");
+    const [pets, setPets] = useState([]);
     const breeds = [];
+
+    // adding ", []" at the end ensures only 1 request to the API is made.
+    // otherwise, it will keep making the requests to the API over and over again.
+    useEffect(() => {
+        requestPets();
+    }, []);
+
+    async function requestPets() {
+        // res = response.
+        // res is a response object from fetch.
+        // fetch() is a normal browser API.
+        const res = await fetch(
+           `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+        );
+        const json = await res.json();
+
+        // console.log(json);
+        setPets(json.pets);
+    }
 
     return (
         <div className="search-params">
