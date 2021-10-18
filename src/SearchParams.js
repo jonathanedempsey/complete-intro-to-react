@@ -4,7 +4,7 @@ import Pet from "./Pet";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
-    const [location, setLocation] = useState("Seattle, WA");
+    const [location, setLocation] = useState("");
     const [animal, setAnimal] = useState("");
     const [breed, setBreed] = useState("");
     const [pets, setPets] = useState([]);
@@ -14,7 +14,7 @@ const SearchParams = () => {
     // otherwise, it will keep making the requests to the API over and over again.
     useEffect(() => {
         requestPets();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     async function requestPets() {
         // res = response.
@@ -79,6 +79,16 @@ const SearchParams = () => {
                 </label>
                 <button>Submit</button>
             </form>
+            {
+                pets.map(pet => (
+                    <Pet
+                        name={pet.name}
+                        animal={pet.animal}
+                        breed={pet.breed}
+                        key={pet.id}
+                    />
+                ))
+            }
         </div>
     );
 };
