@@ -1,3 +1,4 @@
+import { StrictMode } from "react";
 import ReactDOM from "react-dom"
 import SearchParams from "./SearchParams";
 
@@ -13,5 +14,11 @@ const App = () => {
     );
 };
 
-// render App in ID of root
-ReactDOM.render(<App />, document.getElementById('root'));
+// render App in ID of root.
+// StrictMode ensures we only use safe, up to date functionality from the React API.
+ReactDOM.render(
+    <StrictMode>
+        <App />
+    </StrictMode>,
+    document.getElementById('root')
+);
