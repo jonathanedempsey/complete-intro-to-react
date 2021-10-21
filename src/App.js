@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 
@@ -12,13 +12,15 @@ const App = () => {
         <div>
             <h1>Adopt Me!</h1>
             <Router>
-                <Route path="/details/:id">
-                    <Details />
-                </Route>
+                <Switch>
+                    <Route path="/details/:id">
+                        <Details />
+                    </Route>
 
-                <Route path="/">
-                    <SearchParams />
-                </Route>
+                    <Route path="/">
+                        <SearchParams />
+                    </Route>
+                </Switch>
             </Router>
         </div>
     );
